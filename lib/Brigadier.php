@@ -6,7 +6,6 @@ class Brigadier
     private $listOfEmployees;
     private $description;
     private $connect;
-    private $name;
     public function __construct()
     {
         $this->listOfEmployees = $listOfEmployees;
@@ -18,16 +17,17 @@ class Brigadier
         return $this->sortInformationDb();
     }
 
-    private function connectToDbBrigade()
+    private function connectToDb()
     {
         $this->connect = new mysqli("localhost", "root", "", "brigade");
         if ($this->connect->connect_error) {
             die("Eroor:".$this->connect->connect_error);
         }
     }
+  
     private function sortInformationDb()
     {
-        $sort = $this->connect->query("SELECT `name` FROM `brigadier` WHERE 1");
+        $sort = $this->connect->query("SELECT `name`  FROM `brigadier` WHERE 1");
 
         foreach ($sort as $key => $value) {
             foreach ($value as $k => $v) {
@@ -36,40 +36,44 @@ class Brigadier
         }
         return $mas;
     }
-    // public function getBrigadeByNameBrigadier($name)
-    // {
-    //     $this->connectToDb();
-    //     $this->name = $name;
-    //     $res = $this->connect->query("SELECT `name`, `description`, `dailySalary`, `position`, `idWorker` FROM `brigadier` WHERE 1");
-    //     while ($row = $res->fetch_assoc()) {
-    //         $json[]= $row;
-    //     }
-    //     $result = array_filter($json, function ($obj) {
-    //         return $obj['name'] == $this->name;
-    //     });
-    //     var_dump($result[2]["idWorker"]);
-    // }
     public function getBrigadeByNameBrigadier($name)
     {
-        $this->connectToDbBrigade();
-        $id = $this->getIdWorker($name);
-        var_dump($id);
+        $this->connectToDb();
+        $arrayWorker = $this->getListWorker($this->getIdWorker($name));
+        return $arrayWorker;
     }
+
     private function getIdWorker($name)
     {
         $res = $this->connect->query("SELECT `name`, `description`, `dailySalary`, `position`, `idWorker` FROM `brigadier` WHERE 1");
         foreach ($res as $key => $value) {
             foreach ($value as $k => $v) {
-                if ($value["name"] = $name) {
+                if ($value["name"] === $name) {
                     $id = $value["idWorker"];
                 }
             }
         }
         return $id;
     }
+    private function getListWorker($id)
+    {
+        $res = $this->connect->query("SELECT `Name`, `id`, `listOfTools`, `position`, `dailySalary`, `idBrigadier` FROM `worker` WHERE 1");
+        foreach ($res as $key => $value) {
+            if ($value["idBrigadier"] === $id) {
+                unset($value["idBrigadier"]);
+                $arrayWorker[] = $value;
+            }
+        }
+        return $arrayWorker;
+    }
 }
 
 $a = new Brigadier();
 var_dump($a->getOllBrigadier());
 echo "<br>";
-$a->getBrigadeByNameBrigadier("Paul");
+$masWorker = $a->getBrigadeByNameBrigadier("Oleg");
+foreach ($masWorker as $key => $value) {
+    echo "<pre>";
+    print_r($value);
+    echo "</pre>";
+}
