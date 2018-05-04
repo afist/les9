@@ -1,15 +1,15 @@
 <?php
 class Brigade
 {
-    private $listOfEmployees;
-    private $description;
+    // private $listOfEmployees;
+    // private $description;
     private $connect;
 
-    public function __construct()
-    {
-        $this->listOfEmployees = $listOfEmployees;
-        $this->description = $description;
-    }
+    // public function __construct()
+    // {
+    //     $this->listOfEmployees = $listOfEmployees;
+    //     $this->description = $description;
+    // }
 
     public function getOllBrigadier()
     {

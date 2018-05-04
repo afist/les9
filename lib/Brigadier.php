@@ -1,79 +1,32 @@
 <?php
-// namespace lib\Brigadier;
+namespace lib;
+
+// require_once "../autoload.php";
+
 class Brigadier
-//extends Brigade
 {
-    private $listOfEmployees;
-    private $description;
+    use ConnectToDb;
+
     private $connect;
-    public function __construct()
+    public function __construct($name, $description, $dailySalary, $position, $idWorker)
     {
-        $this->listOfEmployees = $listOfEmployees;
-        $this->description = $description;
+        $this->connect = $this->connectToDb();
+        $this->addToDb($name, $description, $dailySalary, $position, $idWorker);
     }
-    public function getOllBrigadier()
+    
+    private function addToDb($name, $description, $dailySalary, $position, $idWorker)
     {
-        $this->connectToDb();
-        return $this->sortInformationDb();
-    }
+        $sql="INSERT INTO brigadier (name, description, dailySalary, position, idWorker) 
+        VALUES( '$name', '$description', '$dailySalary', '$position', '$idWorker')";
 
-    private function connectToDb()
-    {
-        $this->connect = new mysqli("localhost", "root", "", "brigade");
-        if ($this->connect->connect_error) {
-            die("Eroor:".$this->connect->connect_error);
-        }
+        if ($this->connect->query($sql)===true) {
+            echo "Brigadier add";
+        };
     }
-  
-    private function sortInformationDb()
+    public static function hi()
     {
-        $sort = $this->connect->query("SELECT `name`  FROM `brigadier` WHERE 1");
-
-        foreach ($sort as $key => $value) {
-            foreach ($value as $k => $v) {
-                $mas[] = $value[$k];
-            }
-        }
-        return $mas;
-    }
-    public function getBrigadeByNameBrigadier($name)
-    {
-        $this->connectToDb();
-        $arrayWorker = $this->getListWorker($this->getIdWorker($name));
-        return $arrayWorker;
-    }
-
-    private function getIdWorker($name)
-    {
-        $res = $this->connect->query("SELECT `name`, `description`, `dailySalary`, `position`, `idWorker` FROM `brigadier` WHERE 1");
-        foreach ($res as $key => $value) {
-            foreach ($value as $k => $v) {
-                if ($value["name"] === $name) {
-                    $id = $value["idWorker"];
-                }
-            }
-        }
-        return $id;
-    }
-    private function getListWorker($id)
-    {
-        $res = $this->connect->query("SELECT `Name`, `id`, `listOfTools`, `position`, `dailySalary`, `idBrigadier` FROM `worker` WHERE 1");
-        foreach ($res as $key => $value) {
-            if ($value["idBrigadier"] === $id) {
-                unset($value["idBrigadier"]);
-                $arrayWorker[] = $value;
-            }
-        }
-        return $arrayWorker;
+        echo "<br>hi";
     }
 }
 
-$a = new Brigadier();
-var_dump($a->getOllBrigadier());
-echo "<br>";
-$masWorker = $a->getBrigadeByNameBrigadier("Oleg");
-foreach ($masWorker as $key => $value) {
-    echo "<pre>";
-    print_r($value);
-    echo "</pre>";
-}
+// $a = new Brigadier('Valerian', 'work house', 333, 'brigadier', 'id5');
