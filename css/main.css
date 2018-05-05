@@ -1,197 +1,123 @@
-a:hover,a:focus{
-    outline: none;
-    text-decoration: none;
-}
-.tab{
-    background: #200122;
-    background: -webkit-linear-gradient(to bottom, #6f0000, #200122);
-    background: linear-gradient(to bottom, #6f0000, #200122);
-    padding: 40px 50px;
-    position: relative;
-}
-.tab:before{
-    content: "";
-    width: 100%;
-    height: 100%;
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: linear-gradient(#2e3a6a,#2f0b45);
-    opacity: 0.85;
-}
-.tab .nav-tabs{
-    border-bottom: none;
-    padding: 0 20px;
-    position: relative;
-}
-.tab .nav-tabs li{ margin: 0 30px 0 0; }
-.tab .nav-tabs li a{
-    font-size: 18px;
-    color: #fff;
-    border-radius: 0;
-    text-transform: uppercase;
-    background: transparent;
-    padding: 0;
-    margin-right: 0;
-    border: none;
-    border-bottom: 2px solid transparent;
-    opacity: 0.5;
-    position: relative;
-    transition: all 0.5s ease 0s;
-}
-.tab .nav-tabs li a:hover{ background: transparent; }
-.tab .nav-tabs li.active a,
-.tab .nav-tabs li.active a:focus,
-.tab .nav-tabs li.active a:hover{
-    border: none;
-    background: transparent;
-    opacity: 1;
-    border-bottom: 2px solid #eec111;
-    color: #fff;
-}
-.tab .tab-content{
-    padding: 20px 0 0 0;
-    /*margin-top: 40px;*/
-    background: transparent;
-    z-index: 1;
-    position: relative;
-}
-.form-bg{ background: #ddd; }
-.form-horizontal .form-group{
-    margin: 0 0 15px 0;
-    position: relative;
-}
-.form-horizontal .form-control{
-        height: 80px;
-    background: rgba(255,255,255,0.2);
-    border: none;
-    border-radius: 20px;
-    box-shadow: none;
-    padding: 0 20px;
-    font-size: 14px;
-    font-weight: bold;
-    color: #fff;
-    transition: all 0.3s ease 0s;
-}
-.form-horizontal .form-control:focus{
-    box-shadow: none;
-    outline: 0 none;
-}
-.form-horizontal .form-group label{
-    padding: 0 20px;
-    color: #7f8291;
-    text-transform: capitalize;
-    margin-bottom: 10px;
-}
-.form-horizontal .main-checkbox{
-    width: 20px;
-    height: 20px;
-    background: #eec111;
-    float: left;
-    margin: 5px 0 0 20px;
-    border: 1px solid #eec111;
-    position: relative;
-}
-.form-horizontal .main-checkbox label{
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    cursor: pointer;
-}
-.form-horizontal .main-checkbox label:after{
-    content: "";
-    width: 10px;
-    height: 5px;
-    position: absolute;
-    top: 5px;
-    left: 4px;
-    border: 3px solid #fff;
-    border-top: none;
-    border-right: none;
-    background: transparent;
-    opacity: 0;
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-}
-.form-horizontal .main-checkbox input[type=checkbox]{ visibility: hidden; }
-.form-horizontal .main-checkbox input[type=checkbox]:checked + label:after{ opacity: 1; }
-.form-horizontal .text{
-    float: left;
-    font-size: 14px;
-    font-weight: bold;
-    color: #fff;
-    margin-left: 7px;
-    line-height: 20px;
-    padding-top: 5px;
-    text-transform: capitalize;
-}
-.form-horizontal .btn{
-    width: 100%;
-    background: #eec111;
-    padding: 10px 20px;
-    border: none;
-    font-size: 14px;
-    font-weight: bold;
-    color: #fff;
-    border-radius: 20px;
-    text-transform: uppercase;
-    margin: 20px 0 30px 0;
-    width: 49%;
-}
-.form-horizontal .btn:focus{
-    background: #eec111;
-    color: #fff;
-    outline: none;
-    box-shadow: none;
-}
-.form-horizontal .forgot-pass{
-    border-top: 1px solid #615f6c;
-    margin: 0;
-    text-align: center;
-}
-.form-horizontal .forgot-pass .btn{
-    width: auto;
-    background: transparent;
-    margin: 30px 0 0 0;
-    color: #615f6c;
-    text-transform: capitalize;
-    transition: all 0.3s ease 0s;
-}
-.form-horizontal .select{
-    background-color: #5b4c71;
-    width: 49%;
-    display: inline-block;
+.list-group{
+    width: 30%;
+    margin: 40px;
 }
 
-.form-horizontal div.form-control{
-    padding-top: 9px;
+body { background: #eaeaea url('images/bg.png'); font-size: 62.5%; line-height: 1; font-family: Arial, Tahoma, sans-serif; padding-bottom: 60px; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+ol, ul { list-style: none; }
+
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+strong { font-weight: bold; } 
+
+table { border-collapse: collapse; border-spacing: 0; display: block;}
+img { border: 0; max-width: 100%; }
+
+p { font-size: 1.2em; line-height: 1.35em; margin-bottom: 15px; color: #434343; }
+
+#w { display: block; width: 800px; } 
+
+
+#ddmenu {
+  display: block;
+  width: 35%;
+  /*height: 80px;*/
+  margin: 30px;
+  padding: 0 15px;
+  background: #fff;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 1px rgba(20, 20, 20, 0.2);
+  cursor: pointer;
+  outline: none;
+  font-weight: bold;
+  color: #8aa8bd;
 }
-.form-group .btn {
-    /*width: 100%;*/
-    background: #eec111;
-    padding: 10px 20px;
-    border: none;
-    font-size: 14px;
-    font-weight: bold;
-    color: #fff;
-    border-radius: 20px;
-    text-transform: uppercase;
-    margin: 20px 0 30px 0;
+
+#ddmenu li { display: block;  font-size: 1.45em; text-shadow: 1px 1px 0 #fff; border-right: 1px solid #dae0e5; }
+
+#ddmenu li a {
+  display: block;
+  /*float: left;*/
+  padding: 0 12px;
+      margin: 5px;
+  line-height: 78px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #6c87c0;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
 }
-.btn-main{
-    width: 100%;
+#ddmenu li:hover > a { color: #7180a0; background: #d9e2ee; }
+
+#ddmenu table,  #ddmenu ul{
+  position: absolute;
+  top: 30px;
+  left: 320px;
+  width: 500px;
+  background: #fff;
+  display: none;
+  margin: 0;
+  padding: 10px;
+  list-style: none;
+  border-radius: 10px;
+  border: 6px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
-.btn-form3{
-    display: none;
-    margin: 0 auto!important;
+#ddmenu table tr{
+  margin: 5px;
 }
-.colorWhite{
-    color: #fff;
+
+/* رًٍهëî÷êè */
+/*#ddmenu ul:after {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: 100%;
+  left: 8px;
+  border-width: 0 8px 8px 8px;
+  border-style: solid;
+  border-color: #fff transparent; 
 }
-.form-horizontal .forgot-pass .btn:hover{ color: #eec111; }
-@media only screen and (max-width: 479px){
-    .tab{ padding: 40px 20px; }
+
+#ddmenu ul:before {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: 100%;
+  left: 4px;
+  border-width: 0 10px 10px 10px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.1) transparent;  
+}*/
+
+
+
+#ddmenu ul li a {
+  display: block;
+  width: 100%;
+  padding: 6px 7px;
+  line-height: 1.4em;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+#ddmenu ul li a:hover {
+  background: #e9edf3;
+}
+tbody{
+      width: 100%;
+    display: inline-table;
+}
+caption{
+  display: block;
+  float: none;
+  text-align: center;
 }

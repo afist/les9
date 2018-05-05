@@ -5,7 +5,7 @@ trait ConnectToDb
 {
     protected function connectToDb()
     {
-        $connect = new mysqli("localhost", "root", "", "brigade");
+        $connect = new \mysqli("localhost", "root", "", "brigade");
         if ($this->connect->connect_error) {
             die("Eroor:".$this->connect->connect_error);
         }

@@ -1,14 +1,10 @@
 <?php
+    spl_autoload_register(function ($class) {
+        require_once sprintf('%s.php', implode('/', explode('\\', $class)));
+    });
 
-spl_autoload_register(function ($class) {
-    var_dump($class);
-    $map =[
-    "$class" => __DIR__."\\".$class.".php",
-    // "$class" => __DIR__."\mysqli.php"
-    ];
-    echo $map[$class];
-    require_once "$map[$class]";
-    
 
-    // require_once "lib/Brigadier.php";
-});
+// require_once "autoload.php";
+
+// $a = new lib\Brigadier('Valerian', 'work house', 333, 'brigadier', 'id5');
+// $a = new lib\Worker('Valera', 'Pliers, Scraper', "worker", 43, 'id4');
