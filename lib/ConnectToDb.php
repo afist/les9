@@ -5,9 +5,13 @@ trait ConnectToDb
 {
     protected function connectToDb()
     {
-        $connect = new \mysqli("localhost", "root", "", "brigade");
-        if ($this->connect->connect_error) {
-            die("Eroor:".$this->connect->connect_error);
+    	$localhost ="localhost";
+    	$brigade = "brigade";
+    	try{
+    		$connect = new \PDO ( "mysql:host=$localhost;dbname=$brigade", 'bogdan', '12345');
+    	}
+        catch(PDOException $e){
+        	echo $sql.$e->getMessage();
         }
         return $connect;
     }
