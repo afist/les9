@@ -58,7 +58,8 @@ p { font-size: 1.2em; line-height: 1.35em; margin-bottom: 15px; color: #434343; 
   position: absolute;
   top: 30px;
   left: 320px;
-  width: 500px;
+  width: 1000px;
+  min-height: 300px;
   background: #fff;
   display: none;
   margin: 0;
@@ -70,6 +71,12 @@ p { font-size: 1.2em; line-height: 1.35em; margin-bottom: 15px; color: #434343; 
 }
 #ddmenu table tr{
   margin: 5px;
+  height: 40px;
+}
+#ddmenu table tr td, #ddmenu table tr th{
+  margin: 5px;
+      padding: 10px;
+    text-align: center;
 }
 
 /* رًٍهëî÷êè */

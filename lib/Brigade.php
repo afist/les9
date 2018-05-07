@@ -43,7 +43,7 @@ class Brigade
     private function getIdWorker($id)
     {
         $conn = $this->connect;
-        foreach ($conn->query("SELECT `id`, `name`, `description`, `dailySalary`, `position`, `idWorker`, `changeDate`, `daysWorked` FROM `brigadier` WHERE `id`='$id'") as  $value) {
+        foreach ($conn->query("SELECT `id`, `name`, `description`, `dailySalary`, `position`, `idWorker`, `changeDate`, `daysWorked` FROM `brigadier` WHERE `id`='$id'") as $value) {
                     $id = $value["idWorker"];
         }
         return $id;
@@ -58,4 +58,3 @@ class Brigade
         return $arrayWorker;
     }
 }
-

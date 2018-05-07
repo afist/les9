@@ -1,71 +1,58 @@
-$(".btn-main").click(function(event){
-    event.preventDefault();
-
-    var serializedData = $(this).parent().parent().serialize();
-    $(this).css("display","none");
-    $("#form").css("display","block");
-    request = $.ajax({
-        url: "form-send.php",
-        type: "post",
-        data: serializedData,
-        success(a){
-            $('#question').html(a);
-        }
-    });
-
-})
 
  
 
-$(".btn-form1").click(function(event){
+$("#ddmenu a").click(function(event){
     event.preventDefault();
-    var serializedData = {answer:'yes'};
+    $("#ddmenu li").find("table").css("display","none");
+    $(this).parent().find("table").slideToggle();
+    var serializedData = {'id':$(this).parent().attr("data-id")};
+    var b = $(this).parent();
     request = $.ajax({
         url: "form-send.php",
         type: "post",
         data: serializedData,
         success(a){
-            $('#question').html(a);
-            if (a.substr(0, 9) == "Pravilnux") {
-                $(".btn-default").css("display","none");
-                $(".btn-form3").css("display","block");
-            }
-
+            $(b).find( "table" ).find("tr").remove();
+            $(a).insertAfter(b.find( "table" ).find(".main"));
         }
     });
 
 })
 
-$(".btn-form2").click(function(event){
-    event.preventDefault();
-    var serializedData = {answer:'no'};
+$(".changeDate").click(function(event){
+    console.log("12");
+    var data = $(this).parent().find('.id').html();
+    console.log(data);
+
+    // var serializedData = {changeDate:'yes'};
+    // request = $.ajax({
+    //     url: "form-send.php",
+    //     type: "post",
+    //     data: serializedData,
+    //     success(a){
+    //         $('#question').html(a);
+    //         if (a.substr(0, 9) == "Pravilnux") {
+    //             $(".btn-default").css("display","none");
+    //             $(".btn-form3").css("display","block");
+
+    //         }
+
+    //     }
+    // });
+
+})
+
+function changeDate(e, id){
+    var serializedData = {'setDaysWorker':e, 'id':id};
     request = $.ajax({
         url: "form-send.php",
         type: "post",
         data: serializedData,
         success(a){
-            $('#question').html(a);
-            if (a.substr(0, 9) == "Pravilnux") {
-                $(".btn-default").css("display","none");
-                $(".btn-form3").css("display","block");
-
-            }
-
+            
         }
     });
+};
 
-})
-$(".btn-form3").click(function(event){
-    event.preventDefault();
-    var serializedData = {file:'yes'};
-    request = $.ajax({
-        url: "form-send.php",
-        type: "post",
-        data: serializedData,
-        success(a){
-            $('.hi').html(a);
 
-        }
-    });
 
-})

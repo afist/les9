@@ -38,11 +38,11 @@ class Worker
     public function setDaysWorkedWorker($id, $daysWorked)
     {
         $conn = $this->connectToDb();
-        foreach($conn->query("SELECT `changeDate`, `daysWorked` FROM `worker` WHERE `id`='$id'") as $row) {
-        $changeDate = $row["changeDate"];
-        $daysWorkedOld = $row["daysWorked"];
-    }
-        $changeDate =$changeDate.";".date("[Y-m-d H:i:s]")."-daysWorked chenge $daysWorkedOld vs $daysWorked";
+        foreach ($conn->query("SELECT `changeDate`, `daysWorked` FROM `worker` WHERE `id`='$id'") as $row) {
+               $changeDate = $row["changeDate"];
+               $daysWorkedOld = $row["daysWorked"];
+        }
+        $changeDate =$changeDate.date("[Y-m-d H:i:s]")."-daysWorked chenge $daysWorkedOld vs $daysWorked </br>";
         $sql="UPDATE worker SET changeDate='$changeDate', daysWorked='$daysWorked' WHERE id='$id'";
         $conn->exec($sql);
     }
