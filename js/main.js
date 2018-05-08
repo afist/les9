@@ -1,6 +1,25 @@
-
+$.ajax({
+        url: "form-send.php",
+        type: "post",
+        data: {"start": "go"},
+        success(a){
+            $(a).insertAfter( $(".list-brigad") );
+        }
+    });
  
+function changeDate(e, id){
+    var serializedData = {'setDaysWorker':e, 'id':id};
+    request = $.ajax({
+        url: "form-send.php",
+        type: "post",
+        data: serializedData,
+        success(a){
+            
+        }
+    });
+};
 
+setTimeout(function(){  
 $("#ddmenu a").click(function(event){
     event.preventDefault();
     $("#ddmenu li").find("table").css("display","none");
@@ -19,40 +38,70 @@ $("#ddmenu a").click(function(event){
 
 })
 
-$(".changeDate").click(function(event){
-    console.log("12");
-    var data = $(this).parent().find('.id').html();
-    console.log(data);
 
-    // var serializedData = {changeDate:'yes'};
-    // request = $.ajax({
-    //     url: "form-send.php",
-    //     type: "post",
-    //     data: serializedData,
-    //     success(a){
-    //         $('#question').html(a);
-    //         if (a.substr(0, 9) == "Pravilnux") {
-    //             $(".btn-default").css("display","none");
-    //             $(".btn-form3").css("display","block");
+$('.modal-brigadir').click(function() {
 
-    //         }
+        var modalWindow = $(".brigadir-modal");
+        M1.modalShow(modalWindow);
+        $("#overlay-popup-m1").show();
+        return false;
+    })
+    $(window).click(function(e) {
+        var target = $(event.target);
+        if (target.is("#overlay-popup-m1")) {
+            $("#overlay-popup-m1").hide();
+            $(".brigadir-modal").hide();
 
-    //     }
-    // });
+        }
+    });
 
-})
+    $('.modal-worker').click(function() {
 
-function changeDate(e, id){
-    var serializedData = {'setDaysWorker':e, 'id':id};
+        var modalWindow = $(".worker-modal");
+        M1.modalShow(modalWindow);
+        $("#overlay-popup-m1").show();
+        return false;
+    })
+    $(window).click(function(e) {
+        var target = $(event.target);
+        if (target.is("#overlay-popup-m1")) {
+            $("#overlay-popup-m1").hide();
+            $(".worker-modal").hide();
+
+        }
+    });
+
+
+$('.add-brigadir').click(function(event){
+    // event.preventDefault();
+    
+    var serializedData = $(this).parent().serialize();
+    // var b = $(this).parent();
     request = $.ajax({
         url: "form-send.php",
         type: "post",
         data: serializedData,
         success(a){
-            
         }
     });
-};
+
+})
+$('.add-worker').click(function(event){
+    // event.preventDefault();
+    
+    var serializedData = $(this).parent().serialize();
+    // var b = $(this).parent();
+    request = $.ajax({
+        url: "form-send.php",
+        type: "post",
+        data: serializedData,
+        success(a){
+        }
+    });
+
+})
 
 
+
+}, 500);
 

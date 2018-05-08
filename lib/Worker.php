@@ -14,20 +14,20 @@ class Worker
         
     }
 
-    private function addToDb($name, $listOfTools, $position, $dailySalary, $idBrigadier)
+    private function addToDb($name, $listOfTools, $position, $dailySalary, $idBrigadier, $daysWorked)
     {
         $changeDate = date("[Y-m-d H:i:s]")."Worker add";
-        $sql="INSERT INTO worker (`Name`, `listOfTools`, `position`, `dailySalary`, `idBrigadier`, `changeDate`) 
-        VALUES( '$name', '$listOfTools', '$position', '$dailySalary', '$idBrigadier', '$changeDate')";
+        $sql="INSERT INTO worker (`Name`, `listOfTools`, `position`, `dailySalary`, `idBrigadier`, `changeDate`, `daysWorked`) 
+        VALUES( '$name', '$listOfTools', '$position', '$dailySalary', '$idBrigadier', '$changeDate', '$daysWorked')";
         $this->connect->exec($sql);
         echo "Worker add";
         
     }
 
-    public function addWorker($name, $listOfTools, $position, $dailySalary, $idBrigadier)
+    public function addWorker($name, $listOfTools, $position, $dailySalary, $idBrigadier, $daysWorked)
     {
         $this->connect = $this->connectToDb();
-        $this->addToDb($name, $listOfTools, $position, $dailySalary, $idBrigadier);   
+        $this->addToDb($name, $listOfTools, $position, $dailySalary, $idBrigadier, $daysWorked);
     }
     public function delWorkerById($id)
     {

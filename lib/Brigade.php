@@ -31,11 +31,9 @@ class Brigade
   
     private function sortInformationDb()
     {
-        $sort = $this->connect->query("SELECT `name`  FROM `brigadier` WHERE 1");
+        $sort = $this->connect->query("SELECT `id`, `name`  FROM `brigadier` WHERE 1");
         foreach ($sort as $key => $value) {
-            foreach ($value as $k => $v) {
-                $mas[] = $value[$k];
-            }
+                $mas[] = $value;
         }
         return $mas;
     }
